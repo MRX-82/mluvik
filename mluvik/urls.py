@@ -23,4 +23,6 @@ urlpatterns = [
     path('registration_form/', views.registration_form),
     path('enter_mluvik/', views.enter_mluvik),
     path('set_mluvik/<int: user_id>', views.set_mluvik),
+    path('add_word/<int: user_id>', views.add_word),
+    path('mluvik/<int:user_id>', views.mluvik),
 ]

@@ -43,7 +43,7 @@ def enter_mluvik(request):
                                            User_registr.password)
         if word_verifications == "verification":
             user_id = User_registr.id
-            return redirect(f"../mluvik/{user_id}")
+            return redirect(f"../set_mluvik/{user_id}")
         else:
             return HttpResponse(f"Password Error")
     else:
@@ -53,8 +53,26 @@ def enter_mluvik(request):
 
 def set_mluvik(request, user_id):
     """
+    Starting set Mluvik applications
+    """
+    id = User.objects.get(id=user_id)
+    user_id = id.id
+    return render(request, "set_mluvik.html", {"user_name": id.login})
+
+
+def mluvik(request, user_id):
+    """
     Home page applications
     """
     id = User.objects.get(id=user_id)
     user_id = id.id
     return render(request, "mluvik.html", {"user_name": id.login})
+
+
+def add_word(request, user_id):
+    """
+    Page of the adding word to application Mluvik
+    """
+    id = User.objects.get(id=user_id)
+    user_id = id.id
+    return render(request, "add_word.html", {"user_name": id.login})
