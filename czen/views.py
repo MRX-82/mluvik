@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import User, Mluvi
 from .forms import UserForm, Registration
+import .logika import verifications
 
 
 def index(request):
@@ -28,3 +29,23 @@ def registration_form(request):
     else:
         user_form = Registration()
         return render(request, "registration_form.html", {"form": user_form})
+
+
+def enter_mluvik(request):
+    """
+    This is function for enter autorizated users to Mluvik
+    """
+    if request.method == "POST":
+        login = request.POST.get('login')
+        password = request.POST.get('password')
+        User_registr = User.objects.get(login=login)
+        word_verifications = verifications(login, password, User_registr.login,
+                                           User_registr.password)
+        if word_verifications == "verification":
+            user_id = User_registr.id
+            return redirect(f"../mluvik/{user_id}")
+        else:
+            return HttpResponse(f"Password Error")
+    else:
+        user_form = UserForm()
+        return render(request, "enter_mluvik.html", {"form": user_form})

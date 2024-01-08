@@ -11,3 +11,4 @@ class Registration(forms.Form):
     password = forms.CharField(max_length=20)
     my_language = forms.CharField(max_length=20)
     new_language = forms.CharField(max_length=20)
+
