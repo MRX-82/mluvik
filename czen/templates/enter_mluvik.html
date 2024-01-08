@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Enter Mluvik</title>
+  <link href="{% static "css\style.css" %}" rel="stylesheet"/>
+</head>
+<body class="wallpaper-image-theme">
+  <h1>Enter to Mluvik</h1>
+  <h2>Enter your Login</h2>
+  <h2>Enter your password</h2>
+  <form method="POST">
+    {% csrf_token %}
+  <table>
+    {{ form }}
+  </table>
+</form>
+</body>
+</html>
