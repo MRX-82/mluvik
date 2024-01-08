@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import User, Mluvi
 from .forms import UserForm, Registration
-import .logika import verifications
+from .logika import verifications
 
 
 def index(request):
@@ -57,7 +57,7 @@ def set_mluvik(request, user_id):
     """
     id = User.objects.get(id=user_id)
     user_id = id.id
-    return render(request, "set_mluvik.html", {"user_name": id.login})
+    return render(request, "set_mluvik.html", {"user_name": id.login, "user_id": user_id})
 
 
 def mluvik(request, user_id):
@@ -75,4 +75,4 @@ def add_word(request, user_id):
     """
     id = User.objects.get(id=user_id)
     user_id = id.id
-    return render(request, "add_word.html", {"user_name": id.login})
+    return render(request, "add_word.html", {"user_name": id.login, "user_id": user_id})

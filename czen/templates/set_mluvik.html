@@ -4,11 +4,11 @@
 <head>
   <meta charset="utf-8"/>
   <title>Settings Mluvik</title>
-  <link href="{% style "css/style.css" %}" rel="stylesheet"/>
+  <link href="{% static "css/style.css" %}" rel="stylesheet"/>
 </head>
 <body class="wallpaper-image-theme">
   <h1>What do you choise today?</h1>
-  <button onclick="window.location.href='start_learning'" type="button">GO</button>
-  <button onclick="window.location.href='add_word'" type="button">Add New Word</button>
+  <button onclick="window.location.href='mluvik'" type="button">GO</button>
+  <button onclick="window.location.href='{{ user_id }}/add_word'" type="button">Add New Word</button>
 </body>
 </html>
