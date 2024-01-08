@@ -22,5 +22,5 @@ urlpatterns = [
     path('', views.index),
     path('registration_form/', views.registration_form),
     path('enter_mluvik/', views.enter_mluvik),
-    path('mluvik/<int: user_id>', views.mluvik),
+    path('set_mluvik/<int: user_id>', views.set_mluvik),
 ]

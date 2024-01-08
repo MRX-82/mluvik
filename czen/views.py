@@ -49,3 +49,12 @@ def enter_mluvik(request):
     else:
         user_form = UserForm()
         return render(request, "enter_mluvik.html", {"form": user_form})
+
+
+def set_mluvik(request, user_id):
+    """
+    Home page applications
+    """
+    id = User.objects.get(id=user_id)
+    user_id = id.id
+    return render(request, "mluvik.html", {"user_name": id.login})
