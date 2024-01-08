@@ -6,7 +6,7 @@ class UserForm(forms.Form):
     password = forms.CharField(max_length=20)
 
 
-class Registrations(forms.Form):
+class Registration(forms.Form):
     login = forms.CharField(max_length=20)
     password = forms.CharField(max_length=20)
     my_language = forms.CharField(max_length=20)
