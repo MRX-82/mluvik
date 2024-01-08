@@ -26,5 +26,5 @@ def registration_form(request):
         registration_info.save()
         return HttpResponse(f"list{login}{password}{my_language}{new_language}")
     else:
-        user_form = UserForm()
+        user_form = Registration()
         return render(request, "registration_form.html", {"form": user_form})

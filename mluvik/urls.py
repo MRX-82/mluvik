@@ -20,4 +20,5 @@ from czen import views
 
 urlpatterns = [
     path('', views.index),
+    path('registration_form/', views.registration_form),
 ]
