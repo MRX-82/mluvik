@@ -43,7 +43,7 @@ def enter_mluvik(request):
                                            User_registr.password)
         if word_verifications == "verification":
             user_id = User_registr.id
-            return redirect(f"../set_mluvik/{user_id}")
+            return redirect(f"../{user_id}/set_mluvik")
         else:
             return HttpResponse(f"Password Error")
     else:
