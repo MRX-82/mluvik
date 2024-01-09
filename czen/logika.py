@@ -13,9 +13,15 @@ def verifications(login, password, old_login, old_password):
         return word_verifications
 
 
-def added_word(my_word, new_word):
+def added_word(my_word, new_word, user_id):
     """
     This function for save new words in database
     """
-    words = User.objects.create(my_word = my_word, new_word = new_word)
+    user_cl = User.objects.get(id=user_id)
+    words = Mluvi()
+    #words.my_word()
+    words.my_word = my_word
+    words.new_word = new_word
+    words.user = user_cl
+    #words = Mluvi.objects.create(my_word = my_word, new_word = new_word)
     words.save()

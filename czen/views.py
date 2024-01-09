@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import User, Mluvi
-from .forms import UserForm, Registration
+from .forms import UserForm, Registration, AddWord
 from .logika import verifications, added_word
 
 
@@ -78,9 +78,9 @@ def add_word(request, user_id):
     if request.method == "POST":
         new_word = request.POST.get('new_word')
         my_word = request.POST.get('my_word')
-        word = added_word(my_word, new_word)
+        word = added_word(my_word, new_word, user_id)
         return redirect(f"{user_id}/add_word")
     else:
-        user_form = UserForm()
+        user_form = AddWord()
         return render(request, "add_word.html", {"user_name": id.login, "user_id": user_id,
                                                  "form": user_form})

@@ -14,5 +14,5 @@ class Registration(forms.Form):
 
 
 class AddWord(forms.Form):
-    my_word = forms.Charfield(max_length=20)
+    my_word = forms.CharField(max_length=20)
     new_word = forms.CharField(max_length=20)
