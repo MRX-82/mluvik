@@ -12,3 +12,7 @@ class Registration(forms.Form):
     my_language = forms.CharField(max_length=20)
     new_language = forms.CharField(max_length=20)
 
+
+class AddWord(forms.Form):
+    my_word = forms.Charfield(max_length=20)
+    new_word = forms.CharField(max_length=20)
