@@ -25,3 +25,17 @@ def added_word(my_word, new_word, user_id):
     words.user = user_cl
     #words = Mluvi.objects.create(my_word = my_word, new_word = new_word)
     words.save()
+
+
+def word_learning(user_id):
+    """
+    This function load word for learning
+    """
+    word_lern = []
+    words_all = Mluvi.objects.all()
+    for word in words_all:
+        word_lern.append((word.new_word, word.my_word, word.status_word))
+    word_lern_full_sort = sorted(word_lern, key=lambda x: x[2])
+    return word_lern_full_sort
+
+

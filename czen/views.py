@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import User, Mluvi
 from .forms import UserForm, Registration, AddWord
-from .logika import verifications, added_word
+from .logika import verifications, added_word, word_learning
 
 
 def index(request):
@@ -66,7 +66,8 @@ def mluvik(request, user_id):
     """
     id = User.objects.get(id=user_id)
     user_id = id.id
-    return render(request, "mluvik.html", {"user_name": id.login})
+    word_learn = word_learning(user_id)
+    return render(request, "mluvik.html", {"user_name": id.login, "word_learn": word_learn})
 
 
 def add_word(request, user_id):

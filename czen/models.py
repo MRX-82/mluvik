@@ -8,6 +8,7 @@ class User(models.Model):
     password = models.CharField(max_length=20)
     my_language = models.CharField(max_length=20)
     new_language = models.CharField(max_length=20)
+    experience = models.IntegerField(default=0)
 
 
 class Mluvi(models.Model):
@@ -17,4 +18,5 @@ class Mluvi(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     my_word = models.CharField(max_length=25)
     new_word = models.CharField(max_length=25)
+    status_word = models.IntegerField(default=0)
 
