@@ -7,8 +7,10 @@
   <link href="{% static "css/style.css" %}" rel="stylesheet"/>
 </head>
 <body class="wallpaper-image-theme">
-  <h1>What do you choise today?</h1>
-  <button onclick="window.location.href='../../{{ user_id }}/mluvik'" type="button">GO</button>
-  <button onclick="window.location.href='../../{{ user_id }}/add_word'" type="button">Add New Word</button>
+  <h1 class="text-3-theme" style="left: 380px; right: 380px;">What do you choise today?</h1>
+  <button onclick="window.location.href='../../{{ user_id }}/mluvik'" type="button" class="green-button"
+  style="left: 380px; right: 620px; top: 70px;">GO</button>
+  <button onclick="window.location.href='../../{{ user_id }}/add_word'" type="button" class="red-button"
+  style="left: 520px; right: 380px; top: 70px;">Add New Word</button>
 </body>
 </html>
