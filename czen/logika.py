@@ -44,9 +44,22 @@ def word_status(user_id, translate_word):
     This function control word status hight
     """
     all_words = Mluvi.objects.all()
-    one_word = all_words.get(user_id = user_id, my_word=translate_word)
+    one_word = all_words.get(user_id=user_id, my_word=translate_word)
     one_word.status_word+=1
     one_word.save()
+    user = User.objects.get(user_id=user_id)
+    user.experience+=1
+    user.save()
 
 
+def word_repetition_check(user_id, word):
+    """
+    This function do it control word repetition check
+    """
+    all_words = Mluvi.objects.all()
+    one_word = all_words.filter(user_id=user_id, my_word=word).exists()
+    if one_word:
+        return "Ok"
+    else:
+        return "No"
 

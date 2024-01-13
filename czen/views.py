@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import User, Mluvi
 from .forms import UserForm, Registration, AddWord, EnterTranslate
-from .logika import verifications, added_word, word_learning, word_status
+from .logika import verifications, added_word, word_learning, word_status, word_repetition_check
 
 
 def index(request):
@@ -90,8 +90,12 @@ def add_word(request, user_id):
     if request.method == "POST":
         new_word = request.POST.get('new_word')
         my_word = request.POST.get('my_word')
-        word = added_word(my_word, new_word, user_id)
-        return redirect(f"../../{user_id}/add_word")
+        check_word = word_repetition_check(user_id, my_word)
+        if check_word == "No":
+            word = added_word(my_word, new_word, user_id)
+            return redirect(f"../../{user_id}/add_word")
+        else:
+            return HttpResponse(f"This word database is have")
     else:
         user_form = AddWord()
         return render(request, "add_word.html", {"user_name": id.login, "user_id": user_id,
