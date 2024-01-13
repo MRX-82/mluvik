@@ -35,7 +35,18 @@ def word_learning(user_id):
     for word in words_all:
         word_lern.append((word.new_word, word.my_word, word.status_word))
     word_lern_full_sort = sorted(word_lern, key=lambda x: x[2])
-    word_lern_full_sort = word_lern_full_sort[:21]
+    word_lern_full_sort = word_lern_full_sort[:1]
     return word_lern_full_sort
+
+
+def word_status(user_id, translate_word):
+    """
+    This function control word status hight
+    """
+    all_words = Mluvi.objects.all()
+    one_word = all_words.get(user_id = user_id, my_word=translate_word)
+    one_word.status_word+=1
+    one_word.save()
+
 
 

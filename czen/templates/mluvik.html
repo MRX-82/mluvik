@@ -7,7 +7,15 @@
   <link href="{% static "css/style.css" %}" rel="stylesheet"/>
 </head>
 <body class="wallpaper-image-theme">
-  <h1>MLUVIK</h1>
-  <h2>Jou/{{ user_name }}and{{ word_learn }}</h2>
+  <h1 class="text-1-theme" style="left: 480px; right: 480px;">MLUVIK</h1>
+  <h2 class="text-3-theme" style="left: 880px; right: 10px;">{{ user_name }}</h2>
+  <h2 class="text-2-theme" style="left: 160px; right: 780px; top: 110px;">{{ word_learn }}</h2>
+  <form method="POST">
+    {% csrf_token %}
+  <table class="red-table" style="color: rgb(24, 54, 105); top: 160px;">
+    {{ form }}
+  </table>
+  <input type="submit" value="Send" class="red-button" style="left: 160px; right: 780px; top: 205px;">
+</form>
 </body>
 </html>

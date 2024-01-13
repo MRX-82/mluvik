@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import User, Mluvi
-from .forms import UserForm, Registration, AddWord
-from .logika import verifications, added_word, word_learning
+from .forms import UserForm, Registration, AddWord, EnterTranslate
+from .logika import verifications, added_word, word_learning, word_status
 
 
 def index(request):
@@ -66,8 +66,19 @@ def mluvik(request, user_id):
     """
     id = User.objects.get(id=user_id)
     user_id = id.id
-    word_learn = word_learning(user_id)
-    return render(request, "mluvik.html", {"user_name": id.login, "word_learn": word_learn})
+    words_learn = word_learning(user_id)
+    if request.method == "POST":
+        translate_word = request.POST.get('translate_word')
+        if words_learn[0][1] == translate_word:
+            oks = word_status(user_id, translate_word)
+            return redirect(f"../../{user_id}/mluvik")
+        else:
+            return HttpResponse(f"ERRRORR")
+    else:
+        form = EnterTranslate()
+        return render(request, "mluvik.html", {"user_name": id.login,
+                                               "word_learn": words_learn[0][0],
+                                               "form": form})
 
 
 def add_word(request, user_id):
