@@ -1,5 +1,7 @@
 from django import forms
 from .models import User
+from django.forms import ModelForm
+
 
 class UserForm(forms.Form):
     login = forms.CharField(max_length=20)

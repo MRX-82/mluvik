@@ -11,8 +11,9 @@
   <h2 class="text-2-theme" style="left: 320px; right: 520px; top: 135px;">Please input translate word</h2>
   <form method="POST">
     {% csrf_token %}
-  <table class="red-table" style="color: rgb(24, 54, 105);">
-    {{ form }}
+  <table class="red-table" style="color: rgb(24, 54, 105); width: 288px;">
+    <tr><th><label for='id_my_word'>{{ my_language }}</label></th><td><input type='text' name='my_word' required id='id_my_word' /></td></tr>
+    <tr><th><label for='id_new_language'>{{ new_language }}</label></th><td><input type='text' name='new_word' required id='id_new_word' /></td></tr>
   </table>
   <input type="submit" value="Send" class="green-button" style="font-size: 36px; position: absolute; left: 10px;
   right: 835px; top: 185px;">

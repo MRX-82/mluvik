@@ -87,6 +87,8 @@ def add_word(request, user_id):
     """
     id = User.objects.get(id=user_id)
     user_id = id.id
+    my_language = id.my_language
+    new_language = id.new_language
     if request.method == "POST":
         new_word = request.POST.get('new_word')
         my_word = request.POST.get('my_word')
@@ -99,4 +101,4 @@ def add_word(request, user_id):
     else:
         user_form = AddWord()
         return render(request, "add_word.html", {"user_name": id.login, "user_id": user_id,
-                                                 "form": user_form})
+            "form": user_form, "my_language": my_language, "new_language": new_language})
