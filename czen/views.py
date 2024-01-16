@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import User, Mluvi
 from .forms import UserForm, Registration, AddWord, EnterTranslate
-from .logika import verifications, added_word, word_learning, word_status, word_repetition_check
+from .logika import verifications, added_word, word_learning, word_status, \
+    word_repetition_check, word_repetition_status
 
 
 def index(request):
@@ -67,6 +68,7 @@ def mluvik(request, user_id):
     id = User.objects.get(id=user_id)
     user_id = id.id
     words_learn = word_learning(user_id)
+    word_stat = word_repetition_status(user_id)
     if request.method == "POST":
         translate_word = request.POST.get('translate_word')
         if words_learn[0][1] == translate_word:

@@ -47,7 +47,7 @@ def word_status(user_id, translate_word):
     one_word = all_words.get(user_id=user_id, my_word=translate_word)
     one_word.status_word+=1
     one_word.save()
-    user = User.objects.get(user_id=user_id)
+    user = User.objects.get(id=user_id)
     user.experience+=1
     user.save()
 
@@ -62,4 +62,14 @@ def word_repetition_check(user_id, word):
         return "Ok"
     else:
         return "No"
+
+
+def word_repetition_status(user_id):
+    """
+    This function do it examination status of word and delete all words have status more
+    then 100.
+    """
+    all_words = Mluvi.objects.all()
+    user_word = all_words.filter(user_id=user_id, status_word__gt=100)
+    user_word.delete()
 
