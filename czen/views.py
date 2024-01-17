@@ -75,7 +75,8 @@ def mluvik(request, user_id):
             oks = word_status(user_id, translate_word)
             return redirect(f"../../{user_id}/mluvik")
         else:
-            return HttpResponse(f"ERRRORR")
+            return render(request, "clue_word.html", {"word_true": words_learn[0][1],
+                                                      "word_new": translate_word})
     else:
         form = EnterTranslate()
         return render(request, "mluvik.html", {"user_name": id.login,
@@ -104,3 +105,11 @@ def add_word(request, user_id):
         user_form = AddWord()
         return render(request, "add_word.html", {"user_name": id.login, "user_id": user_id,
             "form": user_form, "my_language": my_language, "new_language": new_language})
+
+
+def clue_word(request, user_id, my_word, new_word):
+    """
+    This function view if the entered word is not correct, it also gives a hint on how
+    to correct it.
+    """
+    return render(request, "clue_word.html")

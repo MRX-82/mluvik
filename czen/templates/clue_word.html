@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Clue Word</title>
+  <link href="{% static "css/style.css" %}" rel="stylesheet"/>
+  <script>
+  function clueWord() {
+      var display = document.getElementById("display");
+      display.innerHTML = 'Your word <span class="red-text">{{word_new}}</span> is failed, the correct word would be \
+      <span class="green-text">{{word_true}}</span>';
+    }
+  </script>
+</head>
+<body class="wallpaper-image-theme">
+  <h2 style="color: rgb(24, 54, 105); text-align: center; position: absolute; left: 10px; right: 900px; background-color: grey; border: 3px solid red; border-radius: 12px; font-size: 25px;">Yor word is failed</h2>
+  <button onclick="clueWord()" class="green-button" style="left: 10px; right: 900px; top: 80px;">Clue word</button>
+  <div id="display"></div>
+</body>
+</html>

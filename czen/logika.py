@@ -73,3 +73,6 @@ def word_repetition_status(user_id):
     user_word = all_words.filter(user_id=user_id, status_word__gt=100)
     user_word.delete()
 
+
+
+

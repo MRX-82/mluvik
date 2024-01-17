@@ -80,3 +80,29 @@
   position: absolute;
   top: 110px;
 }
+
+
+body {
+  background-color: grey;
+}
+
+#display {
+  position: absolute;
+  top: 120px;
+  background-color: white;
+  border: 2px solid red;
+  border-radius: 10px;
+  padding: 20px;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.red-text {
+  color: rgb(201, 12, 12);
+  font-size: 25px;
+}
+
+.green-text {
+  color: rgb(35, 145, 16);
+  font-size: 25px;
+}
