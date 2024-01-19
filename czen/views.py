@@ -58,7 +58,9 @@ def set_mluvik(request, user_id):
     """
     id = User.objects.get(id=user_id)
     user_id = id.id
-    return render(request, "set_mluvik.html", {"user_name": id.login, "user_id": user_id})
+    experience = id.experience
+    return render(request, "set_mluvik.html", {"user_name": id.login, "user_id": user_id,
+                                               "experience": experience})
 
 
 def mluvik(request, user_id):
@@ -67,6 +69,7 @@ def mluvik(request, user_id):
     """
     id = User.objects.get(id=user_id)
     user_id = id.id
+    experience = id.experience
     words_learn = word_learning(user_id)
     word_stat = word_repetition_status(user_id)
     if request.method == "POST":
@@ -76,12 +79,12 @@ def mluvik(request, user_id):
             return redirect(f"../../{user_id}/mluvik")
         else:
             return render(request, "clue_word.html", {"word_true": words_learn[0][1],
-                                                      "word_new": translate_word})
+                "word_new": translate_word, "experience": experience})
     else:
         form = EnterTranslate()
         return render(request, "mluvik.html", {"user_name": id.login,
-                                               "word_learn": words_learn[0][0],
-                                               "form": form})
+                "word_learn": words_learn[0][0], "form": form, "experience": experience,
+                                               "user_id": user_id})
 
 
 def add_word(request, user_id):
@@ -90,6 +93,7 @@ def add_word(request, user_id):
     """
     id = User.objects.get(id=user_id)
     user_id = id.id
+    experience = id.experience
     my_language = id.my_language
     new_language = id.new_language
     if request.method == "POST":
@@ -104,7 +108,8 @@ def add_word(request, user_id):
     else:
         user_form = AddWord()
         return render(request, "add_word.html", {"user_name": id.login, "user_id": user_id,
-            "form": user_form, "my_language": my_language, "new_language": new_language})
+            "form": user_form, "my_language": my_language, "new_language": new_language,
+            "experience": experience})
 
 
 def clue_word(request, user_id, my_word, new_word):
@@ -112,4 +117,4 @@ def clue_word(request, user_id, my_word, new_word):
     This function view if the entered word is not correct, it also gives a hint on how
     to correct it.
     """
-    return render(request, "clue_word.html")
+    return render(request, "clue_word.html", {"user_id": user_id})

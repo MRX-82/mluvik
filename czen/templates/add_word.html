@@ -9,6 +9,8 @@
   <h1 class="text-3-theme" style="left: 420px; right: 420px;">Add word to Mluvik</h1>
   <h2 class="text-2-theme" style="left: 320px; right: 520px; top: 105px;">Please input new word</h2>
   <h2 class="text-2-theme" style="left: 320px; right: 520px; top: 135px;">Please input translate word</h2>
+  <h2 class="user-user">{{user_name}}</h2>
+  <h2 class="user-experience">exp: {{experience}}</h2>
   <form method="POST">
     {% csrf_token %}
   <table class="red-table" style="color: rgb(24, 54, 105); width: 288px;">
@@ -17,6 +19,8 @@
   </table>
   <input type="submit" value="Send" class="green-button" style="font-size: 36px; position: absolute; left: 10px;
   right: 835px; top: 185px;">
+  <button onclick="window.location.href='../../{{ user_id }}/set_mluvik'" type="button" class="button-home">Home</button>
+  <button onclick="window.location.href='../../'" type="button" class="button-exit">Exit</button>
 </form>
 </body>
 </html>

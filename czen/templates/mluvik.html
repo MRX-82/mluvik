@@ -8,7 +8,8 @@
 </head>
 <body class="wallpaper-image-theme">
   <h1 class="text-1-theme" style="left: 480px; right: 480px;">MLUVIK</h1>
-  <h2 class="text-3-theme" style="left: 880px; right: 10px;">{{ user_name }}</h2>
+  <h2 class="user-user">{{user_name}}</h2>
+  <h2 class="user-experience">exp: {{experience}}</h2>
   <h2 class="text-2-theme" style="left: 160px; right: 780px; top: 110px;">{{ word_learn }}</h2>
   <form method="POST">
     {% csrf_token %}
@@ -16,6 +17,8 @@
     {{ form }}
   </table>
   <input type="submit" value="Send" class="red-button" style="left: 160px; right: 780px; top: 205px;">
+  <button onclick="window.location.href='..{{user_id}}/set_mluvik'" type="button" class="button-home">Home</button>
+  <button onclick="window.location.href='../../'" type="button" class="button-exit">Exit</button>
 </form>
 </body>
 </html>

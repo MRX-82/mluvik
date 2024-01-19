@@ -25,4 +25,5 @@ urlpatterns = [
     path('<int:user_id>/set_mluvik/', views.set_mluvik),
     path('<int:user_id>/add_word/', views.add_word),
     path('<int:user_id>/mluvik/', views.mluvik),
+    path('<int:user_id>/mluvik/clue_word/', views.clue_word),
 ]
