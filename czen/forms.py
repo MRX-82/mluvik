@@ -5,7 +5,7 @@ from django.forms import ModelForm
 
 class UserForm(forms.Form):
     login = forms.CharField(max_length=20)
-    password = forms.CharField(max_length=20)
+    password = forms.CharField(widget=forms.PasswordInput, max_length=20)
 
 
 class Registration(forms.Form):
